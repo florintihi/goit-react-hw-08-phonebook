@@ -39,7 +39,7 @@ const contactsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.items.findIndex(
-          contact => contact.contactId === action.payload.contactId
+          contact => contact.id === action.payload.id
         );
         state.items.splice(index, 1);
       });
