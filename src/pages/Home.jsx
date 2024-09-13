@@ -1,3 +1,5 @@
+import Helmet from 'react-helmet';
+
 const styles = {
   container: {
     minHeight: 'calc(100vh - 50px)',
@@ -14,8 +16,13 @@ const styles = {
 
 export default function Home() {
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>Welcome!</h1>
-    </div>
+    <>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
+      <div style={styles.container}>
+        <h1 style={styles.title}>Welcome!</h1>
+      </div>
+    </>
   );
 }

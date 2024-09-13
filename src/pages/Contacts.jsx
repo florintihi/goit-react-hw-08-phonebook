@@ -6,6 +6,7 @@ import { fetchContacts } from '../redux/contacts/operations';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { getError, getIsLoading } from '../redux/contacts/selectors';
 import ContactList from 'components/ContactList/ContactList';
+import Helmet from 'react-helmet';
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -16,20 +17,25 @@ export default function Contacts() {
     dispatch(fetchContacts());
   }, [dispatch]);
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
-      }}
-    >
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      {isLoading && !error && <ClipLoader />}
-      <ContactList />
-    </div>
+    <>
+      <Helmet>
+        <title>Contacts</title>
+      </Helmet>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+        }}
+      >
+        <h1>Phonebook</h1>
+        <ContactForm />
+        <h2>Contacts</h2>
+        <Filter />
+        {isLoading && !error && <ClipLoader />}
+        <ContactList />
+      </div>
+    </>
   );
 }
